@@ -1,0 +1,5 @@
+h1, h2{color:#196;}
+:host {
+    font-family: Verdana;
+    color: #655;
+}
