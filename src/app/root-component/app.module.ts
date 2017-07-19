@@ -5,10 +5,12 @@ import { FormsModule }   from '@angular/forms';
 import { ChildModule } from '../child-component/child-component.module';
 import { AppComponent } from '../root-component/app.component';
 
+import { BoldDirective } from '../common/directives//bold.directive'
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BoldDirective
   ],
   imports: [
     BrowserModule,
