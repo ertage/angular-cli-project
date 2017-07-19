@@ -1,21 +1,18 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core'
+import { Component } from '@angular/core'
+
 
 @Component({
   selector: 'child-comp',
   template: `
-    <h2>Hello {{userName}}</h2>
-    <input [ngModel]="userName" (ngModelChange)="onNameChange($event)" />"
+    <div [ngClass]="{segoePrintFont:true}">{{name}}</div>
   `,
-  styles: ['h2, {color: red}']
+  styles: [
+        `.verdanaFont{font-size:13px; font-family:Verdana;}
+        .segoePrintFont{font-size:14px; font-family:"Segoe Print";}`
+    ]
 })
 
 export class ChildComponent{
-  @Input() userName: string;
-
-  @Output() userNameChange: EventEmitter<string> = new EventEmitter();
-
-  onNameChange(model: string){
-    this.userName = model;
-    this.userNameChange.emit(model);
-  }
+  
+  name: string ="Child component"
 }

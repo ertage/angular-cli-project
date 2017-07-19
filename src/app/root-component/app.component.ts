@@ -1,6 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FormsModule} from '@angular/forms'
+
 import { Item } from '../item/Item'
+import { ChildComponent } from '../child-component/child-component.component'
 
 @Component({
   selector: 'app-root',
@@ -13,22 +15,28 @@ export class AppComponent implements OnInit, OnDestroy{
   private items: Item[];
   private clicks:number = 0;
 
+  // @ViewChild(ChildComponent)
+  // private counterComponent: ChildComponent;
+
+  @ViewChild("nameParagraph")
+  nameParagraph: HTMLElement;
+
   constructor(){
     this.log(`constructor`)
-    this.title = 'Hello';
-    this.name = 'Tom';
+    this.title = 'Angular';
     this.items = [
       { purchase: "Хлеб", done: false, price: 15.9 },
         { purchase: "Масло", done: false, price: 60 },
         { purchase: "Картофель", done: true, price: 22.6 },
         { purchase: "Сыр", done: false, price:310 }
     ]
+    
   }
   
   private log(message: string){
     console.log(message);
   }
-  
+
   ngOnInit(){
     this.log('onInit');
   }
@@ -47,5 +55,18 @@ export class AppComponent implements OnInit, OnDestroy{
 
   onChanged(increased){
     increased==true?this.clicks++:this.clicks--;
+  }
+
+  // increment(){
+  //   this.counterComponent.increment();
+  // }
+
+  // decrement(){
+  //   this.counterComponent.decrement();
+  // }
+
+  change(){
+    console.log(this.nameParagraph.textContent);
+    this.nameParagraph.textContent = "hell"
   }
 }
