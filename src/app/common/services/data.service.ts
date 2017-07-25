@@ -6,8 +6,8 @@ import { LogService } from './log.service';
 export class DataService{
 
   private data: Phone[] = [
-    { name: "iPhone 7", price: 2222},
-    { name: "iPhone 8", price: 4444}
+    { name: "iPhone 7", price: 2222, company: "apple"},
+    { name: "iPhone 8", price: 4444, company: "apple"}
   ]
 
   constructor(
@@ -19,7 +19,7 @@ export class DataService{
     return this.data;
   }
 
-  addData(name: string, price: number){
-    this.data.push(new Phone(name, price));
+  addData(name: string, price: number, company: string){
+    this.data.push(new Phone(name, price, company));
   }
 }

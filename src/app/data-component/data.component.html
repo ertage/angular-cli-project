@@ -1,33 +1,44 @@
-<div class="panel">
-  <div class="form-inline">
-      <div class="form-group">
-          <div class="col-md-8">
-              <input class="form-control" [(ngModel)]="name" placeholder = "Модель" />
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-md-6">
-              <input type="number" class="form-control" [(ngModel)]="price" placeholder="Цена" />
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="col-md-offset-2 col-md-8">
-              <button class="btn btn-default" (click)="addItem(name, price)">Добавить</button>
-          </div>
-      </div>
+<table class="table table-striped">
+  <thead>
+      <tr>
+          <th>Модель</th>
+          <th>Цена</th>
+          <th>Производитель</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let phone of phones">
+          <td>{{phone.name}}</td>
+          <td>{{phone.price}}</td>
+          <td>{{phone.company}}</td>
+      </tr>
+  </tbody>
+</table>
+<div class="col-xs-8"> 
+  <div class="form-group">
+      <label>Название модели</label>
+      <input class="form-control" name="name" [(ngModel)]="item.name"  #phoneTitle="ngModel" (change)="onTitleChange()"/>
   </div>
-  <table class="table table-striped">
-      <thead>
-          <tr>
-              <th>Модель</th>
-              <th>Цена</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr *ngFor="let item of items">
-              <td>{{item.name}}</td>
-              <td>{{item.price}}</td>
-          </tr>
-      </tbody>
-  </table>
+  <div class="form-group">
+      <label>Цена</label>
+      <input type="number" class="form-control" name="price" [(ngModel)]="price" #phonePrice="ngModel" />
+  </div>
+  <div class="form-group">
+      <label>Производитель</label>
+      <select class="form-control" name="company" [(ngModel)]="company" #phoneCompany="ngModel">
+          <option  *ngFor="let comp of companies" [value]="comp">
+              {{comp}}
+          </option>
+      </select>
+  </div>
+  <div class="form-group">
+      <button class="btn btn-default" (click)="addPhone(phoneTitle, phonePrice, phoneCompany)">Добавить</button>
+  </div>
+</div>
+
+
+<div>
+    <p>{{phoneTitle.name}} : {{phoneTitle.model}}</p>
+    <p>{{phonePrice.name}} : {{phonePrice.model}}</p>
+    <p>{{phoneCompany.name}} : {{phoneCompany.model}}</p>
 </div>
