@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule }   from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { ChildModule } from '../child-component/child-component.module';
 
@@ -27,9 +28,11 @@ import { LogService } from '../common/services/log.service';
     BrowserModule,
     FormsModule,
     ChildModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [DataService, LogService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
