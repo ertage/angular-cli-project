@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
 
 import { ChildModule } from '../child-component/child-component.module';
 
@@ -15,6 +16,7 @@ import { DataDrivenFormComponent } from '../data-driven-from/data-driven-form.co
 import { BoldDirective } from '../common/directives//bold.directive';
 import { DataService  } from '../common/services/data.service';
 import { LogService } from '../common/services/log.service';
+import { InMemoryDataService } from '../common/services/in-memory-data.service'
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { LogService } from '../common/services/log.service';
     FormsModule,
     ChildModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [DataService, LogService],
   bootstrap: [AppComponent]
