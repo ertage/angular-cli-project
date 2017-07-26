@@ -5,3 +5,6 @@ h1, h2{color:#196;}
 }
 .verdanaFont{font-size:13px; font-family:Verdana;}
 .segoePrintFont{font-size:14px; font-family:"Segoe Print";}
+
+input.ng-touched.ng-invalid {border:solid red 2px;}
+input.ng-touched.ng-valid {border:solid green 2px;}

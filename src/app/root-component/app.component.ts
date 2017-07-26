@@ -1,12 +1,10 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { FormsModule} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Response} from '@angular/http';
-
-
-import { ChildComponent } from '../child-component/child-component.component';
+import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
 
 import { DataService } from '../common/services/data.service';
 import { HttpService } from '../common/services/http.service';
+import { userNameValidator } from '../common/validators/user-name-validator.validator';
 
 import { Phone } from '../data/phone';
 import { User } from '../data/user';
@@ -17,47 +15,17 @@ import { User } from '../data/user';
   styleUrls: ['./app.component.css'],
   providers: [HttpService]
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit{
   private title: string;
-  private users: User[];
-  private user: User = new User();
-  private recievedUser: User;
-  private error: any;
+  
   constructor(
-    private dataService: DataService,
-    private httpService: HttpService
+   
   ){
-    this.log(`constructor`)
-    this.title = 'Angular';  
-    this.user.name = "Tom";
-    this.user.age = 25;
-    this.user.email = "test@test.com"
-  }
-
-  private log(message: string){
-    console.log(message);
+    this.title = 'Angular';
   }
 
   ngOnInit(){
-    this.log('onInit');
-    this.httpService.getData()
-                    .subscribe(
-                      (response) => this.users = response,
-                      (error) => {this.error = error, console.log(error)}
-                    );
+   
   }
-
-
-  submit(user){
-    this.httpService.postData(user)
-                    .subscribe((response) => {
-                        this.users.push(response);
-                      }
-                    )
-  }
-
-  ngOnDestroy(){
-    this.log(`onDestroy`)
-  }
-
+ 
 }

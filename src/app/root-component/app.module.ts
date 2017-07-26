@@ -1,35 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { Routes, RouterModule} from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api'
 
-import { ChildModule } from '../child-component/child-component.module';
+import {  AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from '../root-component/app.component';
 import { DataComponent } from '../data-component/data-component.component';
-import { FormComponent } from '../form/form.component';
-import { DataDrivenFormComponent } from '../data-driven-from/data-driven-form.component'
-
+import { UserComponent } from '../user-component/user.component';
+import { PageNotFoundComponent } from './not-found.component';
+import { HomeComponent } from '../home-component/home.component';
 
 import { BoldDirective } from '../common/directives//bold.directive';
 import { DataService  } from '../common/services/data.service';
 import { LogService } from '../common/services/log.service';
 import { InMemoryDataService } from '../common/services/in-memory-data.service'
 
+
 @NgModule({
   declarations: [
     AppComponent,
     BoldDirective,
     DataComponent,
-    FormComponent,
-    DataDrivenFormComponent
+    UserComponent,
+    PageNotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     FormsModule,
-    ChildModule,
     ReactiveFormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService)

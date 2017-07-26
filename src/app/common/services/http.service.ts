@@ -24,7 +24,6 @@ export class HttpService{
     return this.http.get(this.usersUrl)
                 .map((response: Response) =>{
                   let users: User[] = response.json().data;
-                  console.log(users)
                       return users;
                 })
                 .catch((error: any) => {
@@ -37,5 +36,12 @@ export class HttpService{
 
     return this.http.post(this.usersUrl, body, {headers: this.headers})
                     .map((response:Response) => response.json().data);
+  }
+
+  deleteData(id: number){
+    const url = `${this.usersUrl}/${id}`;
+
+    return this.http.delete(url, {headers: this.headers})
+                    .map(()=>null);
   }
 }

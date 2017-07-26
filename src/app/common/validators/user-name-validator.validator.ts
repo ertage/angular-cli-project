@@ -2,7 +2,7 @@
 
 
 export function userNameValidator(control: FormControl):{[s:string]:boolean}{
-      if(control.value === "bbb"){
+      if(control.value === "Dog"){
         return {"userName" : true}
       } else{
         return null;
