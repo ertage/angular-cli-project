@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Response} from '@angular/http';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { DataService } from '../common/services/data.service';
 import { HttpService } from '../common/services/http.service';
@@ -25,7 +26,8 @@ export class HomeComponent {
   constructor(
     private dataService: DataService,
     private formBuilder: FormBuilder,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private router: Router
   ){
     this.createForm();
   }
@@ -39,7 +41,7 @@ export class HomeComponent {
   }
 
   ngOnInit(){
-    this.httpService.getData()
+    this.httpService.getUsers()
                     .subscribe(
                       (response) => this.users = response,
                       (error) => {this.error = error, console.log(error)}
@@ -61,6 +63,10 @@ export class HomeComponent {
                     .subscribe(()=>{
                       this.users = this.users.filter(item => item != user)
                     })
+  }
+
+  onSelect(user: User){
+    this.router.navigate(['/userDetail', user.id])
   }
 
  }

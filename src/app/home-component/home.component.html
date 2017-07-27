@@ -8,7 +8,7 @@
     </thead>  
     <tbody >
       <tr *ngFor="let user of users">
-        <td bold>{{user?.name}}</td>
+        <td bold (click)="onSelect(user)">{{user?.name}}</td>
         <td>{{user?.age}}</td>
         <td>{{user?.email}}</td>
         <td><button class="btn btn-default" (click)="delete(user)">Удалить</button></td>

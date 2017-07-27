@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
+import 'rxjs/add/operator/toPromise';
 import { User } from '../../data/user';
 
 @Injectable()
@@ -20,7 +21,7 @@ export class HttpService{
     private http: Http
   ){}
 
-  getData(): Observable<User[]>{
+  getUsers(): Observable<User[]>{
     return this.http.get(this.usersUrl)
                 .map((response: Response) =>{
                   let users: User[] = response.json().data;
@@ -29,6 +30,15 @@ export class HttpService{
                 .catch((error: any) => {
                   return Observable.throw(error)
                 });
+  }
+
+  getUser(id: number):Promise<User>{
+    const url = `${this.usersUrl}/${id}`;
+
+    return this.http.get(url)
+      .toPromise()
+      .then(response => response.json().data)
+      
   }
 
   postData(user: User){
