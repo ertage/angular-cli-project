@@ -18,7 +18,8 @@ import { BoldDirective } from '../common/directives//bold.directive';
 import { DataService  } from '../common/services/data.service';
 import { LogService } from '../common/services/log.service';
 import { InMemoryDataService } from '../common/services/in-memory-data.service'
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepicker } from '@ng-bootstrap/ng-bootstrap'
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { InMemoryDataService } from '../common/services/in-memory-data.service'
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     InMemoryWebApiModule.forRoot(InMemoryDataService)
   ],
   providers: [DataService, LogService],

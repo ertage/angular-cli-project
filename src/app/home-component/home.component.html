@@ -36,4 +36,8 @@
   </div>
 </form>
 
-  
+<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date =  $event.next" (load)="selectToday()"></ngb-datepicker>
+
+
+<pre>Month: {{date.day}}.{{ date.month }}.{{ date.year }}</pre>
+<pre>{{model | json }}</pre>

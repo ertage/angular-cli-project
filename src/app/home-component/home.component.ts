@@ -9,7 +9,7 @@ import { userNameValidator } from '../common/validators/user-name-validator.vali
 
 import { Phone } from '../data/phone';
 import { User } from '../data/user';
-
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   
 @Component({
     selector: 'home-app',
@@ -22,6 +22,7 @@ export class HomeComponent {
   private recievedUser: User;
   private error: any;
   private myForm: FormGroup;
+  private currentDate: NgbDateStruct;
 
   constructor(
     private dataService: DataService,
@@ -30,6 +31,7 @@ export class HomeComponent {
     private router: Router
   ){
     this.createForm();
+    
   }
 
   createForm(){
@@ -46,6 +48,7 @@ export class HomeComponent {
                       (response) => this.users = response,
                       (error) => {this.error = error, console.log(error)}
                     );
+
   }
 
 
